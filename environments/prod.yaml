@@ -1,0 +1,11 @@
+AWSAccountID: "XXXXXXXXXXXX"
+AWSProfileName: "default"
+AWSProfileRegion: "us-east-1"
+
+App: "ProdApplication"
+Environment: "prod"
+Version: "0.0.0"
+Build: "0"
+
+Parameters:
+  TestParameter: "ProdFooBar"
