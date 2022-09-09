@@ -1,9 +1,8 @@
 import path from 'path';
 import * as fs from 'fs'
-import { App, Aspects } from 'aws-cdk-lib';
-import { AwsSolutionsChecks } from 'cdk-nag';
-import { DefaultStack } from './stacks/default-stack';
+import { App } from 'aws-cdk-lib';
 import { BuildConfig } from './environment/build-config';
+import { CdkpipelinesDemoPipelineStack } from './stacks/cdkpipelines-demo-pipeline-stack';
 const yaml = require('js-yaml');
 
 const app = new App();
@@ -34,6 +33,7 @@ function getConfig() {
 
         Parameters: {
             TestParameter: ensureString(unparsedEnv['Parameters'], 'TestParameter'),
+            GithubSecretName: ensureString(unparsedEnv['Parameters'], 'GithubSecretName'),
         }
     };
 
@@ -43,13 +43,13 @@ function getConfig() {
 let buildConfig: BuildConfig = getConfig();
 
 let defaultStackName = buildConfig.App + "-" + buildConfig.Environment + "-default";
-const defaultStack = new DefaultStack(app, defaultStackName, {
+new CdkpipelinesDemoPipelineStack(app, defaultStackName, {
   env: {
       region: buildConfig.AWSProfileRegion,
       account: buildConfig.AWSAccountID
   },
 }, buildConfig);
 
-Aspects.of(defaultStack).add(new AwsSolutionsChecks({ verbose: true }));
+// Aspects.of(defaultStack).add(new AwsSolutionsChecks({ verbose: true }));
 
 app.synth();

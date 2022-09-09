@@ -9,3 +9,4 @@ Build: "0"
 
 Parameters:
   TestParameter: "ProdFooBar"
+  GithubSecretName: "CDKPipelines/Prod/GithubSecret"

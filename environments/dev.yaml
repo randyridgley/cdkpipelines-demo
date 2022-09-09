@@ -1,11 +1,12 @@
-AWSAccountID: "XXXXXXXXXXXX"
+AWSAccountID: "649037252677"
 AWSProfileName: "default"
 AWSProfileRegion: "us-east-1"
 
-App: "DevApplication"
+App: "CDKPipelines"
 Environment: "dev"
 Version: "0.0.0"
 Build: "0"
 
 Parameters:
   TestParameter: "TestFooBar"
+  GithubSecretName: "CDKPipelines/Dev/GithubSecret"

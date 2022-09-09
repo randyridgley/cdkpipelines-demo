@@ -13,4 +13,5 @@ export interface BuildConfig {
 
 export interface Parameters {
     readonly TestParameter?: string;
+    readonly GithubSecretName: string
 }
